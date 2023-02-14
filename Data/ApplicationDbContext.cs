@@ -14,5 +14,6 @@ namespace People.Data
         {
         }
         public DbSet<People.Models.DataModels.Person> Person { get; set; }
+        public DbSet<People.Models.DataModels.Company> Companies { get; set; }
     }
 }

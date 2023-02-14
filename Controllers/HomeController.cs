@@ -28,6 +28,11 @@ namespace People.Controllers
             return View();
         }
 
+        public IActionResult Companies()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
