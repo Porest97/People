@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Company>
+
+@{
+    ViewData["Title"] = "IndexCompanies";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h6>Index Companies</h6>
+    </div>
+    <div class="card-body">
+        <a class="btn tbn-sm btn-success" asp-action="CreateCompany">Create Company</a>
+        <a class="btn tbn-sm btn-success" asp-controller="Home" asp-action="Index">Home</a>
+        <a class="btn tbn-sm btn-success" asp-controller="Home" asp-action="Companies">To Companies</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CenterNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CompanyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CenterNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CompanyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            <a class="btn tbn-sm btn-success" asp-action="EditCompany" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn tbn-sm btn-success" asp-action="DetailsCompany" asp-route-id="@item.Id">Details</a>
+                            <a class="btn tbn-sm btn-danger" asp-action="DeleteCompany" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="card-footer">
+    <a class="btn tbn-sm btn-success" asp-controller="Home" asp-action="Index">Home</a>
+    <a class="btn tbn-sm btn-success" asp-controller="Home" asp-action="Companies">To Companies</a>
+</div>

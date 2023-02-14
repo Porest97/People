@@ -20,13 +20,13 @@ namespace People.Controllers
         }
 
         // GET: Companies
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> IndexCompanies()
         {
               return View(await _context.Companies.ToListAsync());
         }
 
         // GET: Companies/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> DetailsCompany(int? id)
         {
             if (id == null || _context.Companies == null)
             {
@@ -44,7 +44,7 @@ namespace People.Controllers
         }
 
         // GET: Companies/Create
-        public IActionResult Create()
+        public IActionResult CreateCompany()
         {
             return View();
         }
@@ -54,19 +54,19 @@ namespace People.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CenterNumber,CompanyName,Description")] Company company)
+        public async Task<IActionResult> CreateCompany([Bind("Id,CenterNumber,CompanyName,Description")] Company company)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(company);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexCompanies));
             }
             return View(company);
         }
 
         // GET: Companies/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> EditCompany(int? id)
         {
             if (id == null || _context.Companies == null)
             {
@@ -86,7 +86,7 @@ namespace People.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CenterNumber,CompanyName,Description")] Company company)
+        public async Task<IActionResult> EditCompany(int id, [Bind("Id,CenterNumber,CompanyName,Description")] Company company)
         {
             if (id != company.Id)
             {
@@ -111,13 +111,13 @@ namespace People.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexCompanies));
             }
             return View(company);
         }
 
         // GET: Companies/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> DeleteCompany(int? id)
         {
             if (id == null || _context.Companies == null)
             {
@@ -135,7 +135,7 @@ namespace People.Controllers
         }
 
         // POST: Companies/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteCompany")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
@@ -150,7 +150,7 @@ namespace People.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexCompanies));
         }
 
         private bool CompanyExists(int id)
